@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+
+.fat{
+  color: rgb(243, 87, 113);
+  padding: 10px 20px;
+  border: none;
+}

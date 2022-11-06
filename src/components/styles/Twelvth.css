@@ -1,0 +1,23 @@
+.single-card img{
+    width: 100%;
+}
+
+.single-card{
+    border: solid;
+    margin: 10px 20px;
+}
+
+.card-wrapper{
+    display: grid;
+    place-items: center;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-text{
+    padding: 10px 20px;
+    text-align: justify;
+}
