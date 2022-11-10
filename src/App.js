@@ -1,27 +1,58 @@
 import './App.css';
-import Counter from './components/Counter';
-import Eight from './components/Eight';
-import Eleventh from './components/Eleventh';
-import Fifth from './components/Fifth';
-import First from './components/First';
-import FootballClub from './components/FootballClub';
-import Fouth from './components/Fouth';
-import Nineth from './components/Nineth';
-import Second from './components/Second'
-import Seventh from './components/Seventh';
-import Sixth from './components/Sixth';
-import Tenth from './components/Tenth';
-import Third from './components/Third';
-import Timer from './components/Timer';
-import Twelvth from './components/Twelvth';
-import Thirtheen1 from './components/Thirtheen1';
-import ShowMessge from './components/ShowMessge';
-import Home from './components/pages/Home';
+import {BrowserRouter as Router , Routes, Route } from 'react-router-dom'
+// import Counter from './components/Counter';
+// import Eight from './components/Eight';
+// import Eleventh from './components/Eleventh';
+// import Fifth from './components/Fifth';
+// import First from './components/First';
+// import FootballClub from './components/FootballClub';
+// import Fouth from './components/Fouth';
+// import Nineth from './components/Nineth';
+// import Second from './components/Second'
+// import Seventh from './components/Seventh';
+// import Sixth from './components/Sixth';
+// import Tenth from './components/Tenth';
+// import Third from './components/Third';
+// import Timer from './components/Timer';
+// import Twelvth from './components/Twelvth';
+// import Thirtheen1 from './components/Thirtheen1';
+// import ShowMessge from './components/ShowMessge';
+// import Home from './components/pages/Home';
+// import About from './components/pages/About';
+// import Service from './components/pages/Service';
+import BootstrapNavbar from './components/BootstrapNavbar';
+import { lazy, Suspense } from 'react';
+import Old from './components/Old';
+import New from './components/New';
+import { AuthProvider } from './components/auth';
+import Login from './components/loginfiles/Login';
+import { RequireAuth } from './components/RequireAuth';
+
+const Home = lazy(()=>import('./components/pages/Home'))
+const About = lazy(()=>import('./components/pages/About'))
+const Service = lazy(()=>import('./components/pages/Service'))
 
 function App() {
   return (
+    <AuthProvider>
+
     <div className="">
-      <Home />
+
+      <Router>
+        <BootstrapNavbar />
+        <Suspense fallback={<h1>Loading...</h1>}>
+      <Routes >
+          <Route path="/" element={<Home />}/>
+          <Route path="/login" element={<Login />} />
+          <Route path='/about' element={<About/>}/>
+          <Route path='/service' element={<RequireAuth><Service /></RequireAuth>}>
+            <Route path='old' element={<Old />}/>
+            <Route path='new' element={<New/>}/>
+          </Route>
+      </Routes>
+          </Suspense>
+      </Router>
+      {/* <Home />
 
       <h1>Hello World</h1>
       <First></First>
@@ -66,8 +97,10 @@ function App() {
 
       <Thirtheen1 />
  
-      <ShowMessge />
+      <ShowMessge /> */}
     </div>
+    </AuthProvider>
+
   );
 }
 

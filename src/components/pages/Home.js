@@ -1,18 +1,16 @@
 import React from 'react'
-import AsynAwait from '../AsynAwait'
-import BootstrapNavbar from '../BootstrapNavbar'
+import ContextHook from '../ContextHook'
 import Fiftheen from '../Fiftheen'
 import Fortheen from '../Fortheen'
-import Sixtheen from '../Sixtheen'
 
 const Home = () => {
   return (
     <div>
-        <BootstrapNavbar />
         <Fortheen />
         <Fiftheen />
         {/* <Sixtheen /> */}
-        <AsynAwait />
+        {/* <AsynAwait /> */}
+        <ContextHook/>
     </div>
   )
 }
